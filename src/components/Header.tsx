@@ -3,7 +3,12 @@ import { Search, Sparkles, Map, ChevronRight, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Header.css';
 
-export default function Header() {
+interface HeaderProps {
+    activeTab: 'feed' | 'mentors' | 'roadmaps';
+    setActiveTab: (tab: 'feed' | 'mentors' | 'roadmaps') => void;
+}
+
+export default function Header({ activeTab, setActiveTab }: HeaderProps) {
     const [query, setQuery] = useState('');
     const [isFocused, setIsFocused] = useState(false);
     const [scanning, setScanning] = useState(false);
@@ -41,9 +46,18 @@ export default function Header() {
                 </div>
 
                 <nav className="main-nav">
-                    <a href="#" className="nav-link active">Feed</a>
-                    <a href="#" className="nav-link">Mentors</a>
-                    <a href="#" className="nav-link">Roadmaps</a>
+                    <button
+                        className={`nav-link ${activeTab === 'feed' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('feed')}
+                    >Feed</button>
+                    <button
+                        className={`nav-link ${activeTab === 'mentors' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('mentors')}
+                    >Mentors</button>
+                    <button
+                        className={`nav-link ${activeTab === 'roadmaps' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('roadmaps')}
+                    >Roadmaps</button>
                 </nav>
 
                 <div className="search-wrapper" ref={dropdownRef}>
