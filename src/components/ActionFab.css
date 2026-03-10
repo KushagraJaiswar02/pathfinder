@@ -1,0 +1,184 @@
+.floating-action-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: linear-gradient(135deg, var(--accent-indigo), #8b5cf6);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-full);
+    box-shadow: 0 10px 25px -5px var(--accent-indigo-glow);
+    font-weight: 600;
+    font-size: 1.05rem;
+    transform: translateY(0);
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 100;
+}
+
+.floating-action-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px -5px var(--accent-indigo-glow);
+}
+
+.fab-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-overlay);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-content {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h2 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.close-modal {
+    color: var(--text-muted);
+    padding: 0.25rem;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.close-modal:hover {
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+.ai-context-fill {
+    margin: 1.5rem 1.5rem 0;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    background: linear-gradient(145deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0.03) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+}
+
+.context-icon {
+    color: var(--accent-indigo);
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+}
+
+.ai-context-fill p {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.doubt-input-area {
+    padding: 1.5rem;
+}
+
+.input-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.context-tag {
+    background-color: var(--bg-surface);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-color);
+}
+
+.doubt-textarea {
+    width: 100%;
+    min-height: 150px;
+    background-color: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    line-height: 1.5;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+}
+
+.doubt-textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+}
+
+.post-anonymously {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.post-anonymously:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+.submit-doubt-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--border-color);
+    color: var(--text-muted);
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: var(--radius-full);
+    transition: all 0.2s;
+    cursor: not-allowed;
+}
+
+.submit-doubt-btn.active {
+    background-color: var(--accent-indigo);
+    color: white;
+    cursor: pointer;
+    box-shadow: var(--shadow-glow);
+}
+
+.submit-doubt-btn.active:hover {
+    background-color: var(--accent-indigo-hover);
+}

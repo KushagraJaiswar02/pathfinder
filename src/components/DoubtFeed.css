@@ -1,0 +1,294 @@
+.doubt-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.feed-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.feed-header h2 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.feed-filters {
+    display: flex;
+    gap: 0.5rem;
+    background-color: var(--bg-surface);
+    padding: 0.25rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.filter-btn {
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.filter-btn:hover {
+    color: var(--text-primary);
+}
+
+.filter-btn.active {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.feed-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Doubt Card Styles */
+.doubt-card {
+    display: flex;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.doubt-card:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+.card-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem 0.5rem 1.25rem 1rem;
+    background-color: rgba(30, 37, 56, 0.3);
+    min-width: 60px;
+}
+
+.upvote-btn {
+    color: var(--text-muted);
+    border-radius: var(--radius-md);
+    padding: 0.25rem;
+    transition: all 0.2s;
+}
+
+.upvote-btn:hover {
+    color: var(--accent-indigo);
+    background-color: rgba(99, 102, 241, 0.1);
+}
+
+.upvote-btn.active {
+    color: var(--accent-indigo);
+}
+
+.upvote-btn.active .fill-current {
+    fill: var(--accent-indigo);
+}
+
+.upvote-count {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-top: 0.25rem;
+}
+
+.upvote-count.active {
+    color: var(--accent-indigo);
+}
+
+.card-content {
+    flex: 1;
+    padding: 1.25rem 1.5rem 1.25rem 1rem;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.user-avatar {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+}
+
+.user-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.timestamp {
+    color: var(--text-muted);
+}
+
+.more-btn {
+    color: var(--text-muted);
+    padding: 0.25rem;
+    border-radius: 50%;
+}
+
+.more-btn:hover {
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+.doubt-title {
+    font-size: 1.15rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+.tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    background-color: var(--bg-surface);
+    color: var(--accent-indigo);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-full);
+}
+
+/* Expert Response */
+.expert-response {
+    border-left: 2px solid var(--border-color);
+    padding-left: 1.25rem;
+    margin-left: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.expert-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.expert-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+}
+
+.expert-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.expert-name-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.expert-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.verified-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: rgba(59, 130, 246, 0.15);
+    color: var(--verified-blue);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.15rem 0.4rem;
+    border-radius: var(--radius-sm, 4px);
+    /* Uses animation from index.css */
+}
+
+.expert-role {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.expert-company {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Smart TL;DR */
+.smart-tldr {
+    background: linear-gradient(145deg, rgba(99, 102, 241, 0.08) 0%, rgba(99, 102, 241, 0.02) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tldr-header {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--accent-indigo);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.smart-tldr p {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.full-response {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.card-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.4rem 0.5rem;
+    border-radius: var(--radius-md);
+    transition: all 0.2s;
+    margin-left: -0.5rem;
+}
+
+.action-btn:hover {
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+}
