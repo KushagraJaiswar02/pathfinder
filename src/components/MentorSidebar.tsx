@@ -44,7 +44,10 @@ export default function MentorSidebar() {
                 <div className="mentor-list">
                     {TOP_MENTORS.map(mentor => (
                         <div key={mentor.id} className="mentor-list-item">
-                            <img src={mentor.avatar} alt={mentor.name} className="sidebar-avatar" />
+                            <div className="avatar-wrapper">
+                                <img src={mentor.avatar} alt={mentor.name} className="sidebar-avatar" />
+                                <div className="online-indicator animate-pulse-glow-green"></div>
+                            </div>
                             <div className="mentor-info">
                                 <h4>{mentor.name}</h4>
                                 <div className="mentor-work">
@@ -65,6 +68,11 @@ export default function MentorSidebar() {
                 </div>
 
                 <button className="view-all-mentors">View All Mentors</button>
+
+                <div className="active-mentors-counter">
+                    <div className="pulse-dot-green"></div>
+                    <span>42 Mentors from FAANG currently answering doubts</span>
+                </div>
             </div>
 
             <div className="sidebar-widget career-stats">

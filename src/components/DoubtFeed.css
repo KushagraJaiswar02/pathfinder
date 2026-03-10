@@ -292,3 +292,66 @@
     background-color: var(--bg-surface);
     color: var(--text-primary);
 }
+
+.context-toggles {
+    display: flex;
+    gap: 0.5rem;
+    background-color: var(--bg-surface);
+    padding: 0.25rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-color);
+}
+
+.context-toggle-btn {
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-full);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.context-toggle-btn:hover {
+    color: var(--text-primary);
+}
+
+.context-toggle-btn.active {
+    background-color: var(--accent-indigo);
+    color: white;
+    box-shadow: var(--shadow-glow);
+}
+
+.upvote-toast {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background-color: #10b981;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    z-index: 10;
+}
+
+.doubt-card {
+    position: relative;
+    /* Added for toast positioning */
+}
+
+.doubt-card.accepted-glow {
+    border-color: #f59e0b;
+    /* amber-500 */
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
+}
+
+.accept-btn.accepted {
+    color: #f59e0b;
+    background-color: rgba(245, 158, 11, 0.1);
+}
+
+.accept-btn.accepted:hover {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}

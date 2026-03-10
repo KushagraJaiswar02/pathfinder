@@ -6,6 +6,21 @@ import './ActionFab.css';
 export default function ActionFab() {
     const [isOpen, setIsOpen] = useState(false);
     const [doubtText, setDoubtText] = useState('');
+    const [isThinking, setIsThinking] = useState(false);
+    const [showSuggestion, setShowSuggestion] = useState(false);
+
+    const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        const val = e.target.value;
+        setDoubtText(val);
+
+        if (val.toLowerCase().includes('java') && !showSuggestion && !isThinking) {
+            setIsThinking(true);
+            setTimeout(() => {
+                setIsThinking(false);
+                setShowSuggestion(true);
+            }, 2000);
+        }
+    };
 
     return (
         <>
@@ -53,10 +68,35 @@ export default function ActionFab() {
                                     className="doubt-textarea"
                                     placeholder="What's holding you back right now? e.g., 'I've built a React app but I'm struggling to set up my Express server architecture.'"
                                     value={doubtText}
-                                    onChange={(e) => setDoubtText(e.target.value)}
+                                    onChange={handleInput}
                                     autoFocus
                                 />
                             </div>
+
+                            <AnimatePresence>
+                                {isThinking && (
+                                    <motion.div
+                                        className="ai-interception thinking"
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: 'auto' }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                    >
+                                        <div className="pulse-dot"></div>
+                                        <span className="thinking-text">AI is thinking...</span>
+                                    </motion.div>
+                                )}
+
+                                {showSuggestion && (
+                                    <motion.div
+                                        className="ai-interception suggestion"
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                    >
+                                        <Sparkles size={14} className="suggestion-icon" />
+                                        <p><strong>Smart Suggestion:</strong> Found 14 similar discussions. 82% of Mentors recommend <strong>Java for Placements</strong>, but <strong>Python for AI</strong>. <a href="#" className="read-more">Read Comparison?</a></p>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
 
                             <div className="modal-footer">
                                 <button className="post-anonymously">Post Anonymously</button>

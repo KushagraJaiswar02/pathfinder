@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { ArrowBigUp, MessageSquare, Share2, ShieldCheck, Sparkles, MoreHorizontal } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ArrowBigUp, MessageSquare, Share2, ShieldCheck, Sparkles, MoreHorizontal, CheckCircle2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface DoubtCardProps {
     data: {
@@ -21,9 +21,16 @@ interface DoubtCardProps {
     }
 }
 
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
+
 export default function DoubtCard({ data }: DoubtCardProps) {
     const [upvotes, setUpvotes] = useState(data.initialUpvotes);
     const [hasUpvoted, setHasUpvoted] = useState(false);
+    const [showToast, setShowToast] = useState(false);
+    const [isAccepted, setIsAccepted] = useState(false);
 
     const handleUpvote = () => {
         if (hasUpvoted) {
@@ -32,15 +39,19 @@ export default function DoubtCard({ data }: DoubtCardProps) {
         } else {
             setUpvotes(prev => prev + 1);
             setHasUpvoted(true);
+            setShowToast(true);
+            setTimeout(() => setShowToast(false), 3000);
         }
+    };
+
+    const handleAccept = () => {
+        setIsAccepted(true);
     };
 
     return (
         <motion.article
-            className="doubt-card"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+            className={`doubt-card ${isAccepted ? 'accepted-glow' : ''}`}
+            variants={itemVariants}
         >
             {/* Upvote Sidebar */}
             <div className="card-sidebar">
@@ -54,6 +65,19 @@ export default function DoubtCard({ data }: DoubtCardProps) {
                     {upvotes}
                 </span>
             </div>
+
+            <AnimatePresence>
+                {showToast && (
+                    <motion.div
+                        className="upvote-toast"
+                        initial={{ opacity: 0, scale: 0.8, x: 20 }}
+                        animate={{ opacity: 1, scale: 1, x: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, x: 20 }}
+                    >
+                        +1 Karma to Mentor {data.expertCompany}
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Main Content */}
             <div className="card-content">
@@ -111,6 +135,13 @@ export default function DoubtCard({ data }: DoubtCardProps) {
                     <button className="action-btn">
                         <Share2 size={18} />
                         <span>Share</span>
+                    </button>
+                    <button
+                        className={`action-btn accept-btn ${isAccepted ? 'accepted' : ''}`}
+                        onClick={handleAccept}
+                    >
+                        <CheckCircle2 size={18} className={isAccepted ? 'fill-current' : ''} />
+                        <span>{isAccepted ? 'Accepted Solution' : 'Accept Answer'}</span>
                     </button>
                 </div>
             </div>

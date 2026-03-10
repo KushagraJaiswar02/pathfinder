@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import DoubtCard from './DoubtCard';
 import './DoubtFeed.css';
 
@@ -37,23 +38,65 @@ const MOCK_DOUBTS = [
     }
 ];
 
+const LOCAL_DOUBTS = [
+    {
+        id: 'local-1',
+        user: 'Anjali Desai',
+        avatar: 'https://i.pravatar.cc/150?img=42',
+        timestamp: '1 hour ago',
+        doubt: 'How I cracked a 12 LPA job from a Tier-3 college in MP (Indore/Ujjain region)? What local companies visit?',
+        tags: ['#Tier3MP', '#IndoreIT', '#Ujjain', '#OffCampus'],
+        expertName: 'Vikram Joshi',
+        expertRole: 'SDE II',
+        expertCompany: 'TCS Digital',
+        expertAvatar: 'https://i.pravatar.cc/150?img=15',
+        tldr: 'Focus on off-campus drives for service-based MNCs in Indore (TCS, Infosys) but aim for product-based via remote internships.',
+        response: "I graduated from a Tier-3 college near Indore. The secret is that you shouldn't just rely on campus placements. Build a strong GitHub, participate in central India hackathons, and apply for remote internships at startups. Many local companies like Impetus and Yash Technologies look for strong fundamental skills.",
+        initialUpvotes: 520,
+        initialComments: 88
+    }
+];
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.15 }
+    }
+};
+
 export default function DoubtFeed() {
+    const [contextFilter, setContextFilter] = useState<'global' | 'local'>('global');
+
+    const displayDoubts = contextFilter === 'global' ? MOCK_DOUBTS : LOCAL_DOUBTS;
+
     return (
         <section className="doubt-feed">
             <div className="feed-header">
-                <h2>Trending Doubts</h2>
-                <div className="feed-filters">
-                    <button className="filter-btn active">Hot</button>
-                    <button className="filter-btn">New</button>
-                    <button className="filter-btn">Unanswered</button>
+                <h2>{contextFilter === 'global' ? 'Trending Doubts' : 'Local Context (Ujjain/Tier-3)'}</h2>
+                <div className="context-toggles">
+                    <button
+                        className={`context-toggle-btn ${contextFilter === 'global' ? 'active' : ''}`}
+                        onClick={() => setContextFilter('global')}
+                    >Global Advice</button>
+                    <button
+                        className={`context-toggle-btn ${contextFilter === 'local' ? 'active' : ''}`}
+                        onClick={() => setContextFilter('local')}
+                    >My Local Context</button>
                 </div>
             </div>
 
-            <div className="feed-list">
-                {MOCK_DOUBTS.map(doubt => (
+            <motion.div
+                className="feed-list"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                key={contextFilter}
+            >
+                {displayDoubts.map(doubt => (
                     <DoubtCard key={doubt.id} data={doubt} />
                 ))}
-            </div>
+            </motion.div>
         </section>
     );
 }
