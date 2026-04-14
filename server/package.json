@@ -1,0 +1,7 @@
+{
+  "name": "pathfinder-server",
+  "version": "1.0.0",
+  "scripts": {
+    "seed": "node seed.js"
+  }
+}
